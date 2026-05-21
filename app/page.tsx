@@ -9,52 +9,13 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card } from "@/components/ui/card"
 import InterstellarNebula from "@/components/interstellar-nebula"
 import { ParticleField } from "@/components/particle-field"
-import { ProjectCard } from "@/components/project-card"
 import { sendEmail } from "./actions"
 import { toast } from "sonner"
-
-const PROJECTS = [
-  {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with real-time inventory management.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
-    githubUrl: "https://github.com/NiessenWaffer",
-    liveUrl: "#",
-    className: "md:col-span-2 md:row-span-2",
-  },
-  {
-    title: "AI Chat Assistant",
-    description: "Intelligent chatbot powered by OpenAI with context-aware responses.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "Node.js", "OpenAI"],
-    githubUrl: "https://github.com/NiessenWaffer",
-    liveUrl: "#",
-  },
-  {
-    title: "Portfolio V1",
-    description: "The first iteration of my personal portfolio focused on minimal design.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["HTML", "CSS", "JavaScript"],
-    githubUrl: "https://github.com/NiessenWaffer",
-    liveUrl: "#",
-  },
-  {
-    title: "Weather Tracker",
-    description: "Real-time weather updates with location-based forecasting.",
-    image: "/placeholder.svg?height=400&width=600",
-    tags: ["React", "API", "Chart.js"],
-    githubUrl: "https://github.com/NiessenWaffer",
-    liveUrl: "#",
-    className: "md:col-span-2",
-  },
-]
 
 export default function Portfolio() {
   const [isVisible, setIsVisible] = useState(false)
   const [isPending, startTransition] = useTransition()
   const heroRef = useRef<HTMLDivElement>(null)
-  const mediaRef = useRef<HTMLDivElement>(null)
   const contactRef = useRef<HTMLDivElement>(null)
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -140,32 +101,13 @@ export default function Portfolio() {
         >
           <Button
             variant="ghost"
-            onClick={() => scrollToSection(mediaRef)}
+            onClick={() => scrollToSection(contactRef)}
             className="text-white hover:text-primary animate-bounce"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </Button>
-        </div>
-      </section>
-
-      <section ref={mediaRef} className="py-24 flex items-center justify-center relative z-10 px-4">
-        <div className="max-w-6xl mx-auto w-full">
-          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12 fade-in-up">
-            Featured <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-orange-400">Projects</span>
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[200px] gap-4">
-            {PROJECTS.map((project, index) => (
-              <ProjectCard
-                key={index}
-                {...project}
-                className={`${project.className || ""} opacity-0 translate-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-forwards`}
-                style={{ animationDelay: `${index * 150}ms` }}
-              />
-            ))}
-          </div>
         </div>
       </section>
 
