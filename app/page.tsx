@@ -111,6 +111,19 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Resume Section */}
+      <section className="py-12 flex flex-col items-center justify-center relative z-10 px-4">
+        <Button 
+          asChild
+          size="lg"
+          className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-full pulse-glow transition-all hover:scale-105"
+        >
+          <a href="/Resume.docx" download>
+            Download My Resume
+          </a>
+        </Button>
+      </section>
+
       <section ref={contactRef} className="py-16 flex items-center justify-center relative z-10 px-4">
         <div className="max-w-xl mx-auto w-full">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8 fade-in-up">Contact Me</h2>
