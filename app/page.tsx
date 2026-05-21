@@ -9,9 +9,46 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card } from "@/components/ui/card"
 import InterstellarNebula from "@/components/interstellar-nebula"
 import { ParticleField } from "@/components/particle-field"
-import { MediaDropZone } from "@/components/media-drop-zone"
+import { ProjectCard } from "@/components/project-card"
 import { sendEmail } from "./actions"
 import { toast } from "sonner"
+
+const PROJECTS = [
+  {
+    title: "E-Commerce Platform",
+    description: "A full-stack e-commerce solution with real-time inventory management.",
+    image: "/placeholder.svg?height=400&width=600",
+    tags: ["Next.js", "TypeScript", "Tailwind", "Prisma"],
+    githubUrl: "https://github.com/NiessenWaffer",
+    liveUrl: "#",
+    className: "md:col-span-2 md:row-span-2",
+  },
+  {
+    title: "AI Chat Assistant",
+    description: "Intelligent chatbot powered by OpenAI with context-aware responses.",
+    image: "/placeholder.svg?height=400&width=600",
+    tags: ["React", "Node.js", "OpenAI"],
+    githubUrl: "https://github.com/NiessenWaffer",
+    liveUrl: "#",
+  },
+  {
+    title: "Portfolio V1",
+    description: "The first iteration of my personal portfolio focused on minimal design.",
+    image: "/placeholder.svg?height=400&width=600",
+    tags: ["HTML", "CSS", "JavaScript"],
+    githubUrl: "https://github.com/NiessenWaffer",
+    liveUrl: "#",
+  },
+  {
+    title: "Weather Tracker",
+    description: "Real-time weather updates with location-based forecasting.",
+    image: "/placeholder.svg?height=400&width=600",
+    tags: ["React", "API", "Chart.js"],
+    githubUrl: "https://github.com/NiessenWaffer",
+    liveUrl: "#",
+    className: "md:col-span-2",
+  },
+]
 
 export default function Portfolio() {
   const [isVisible, setIsVisible] = useState(false)
@@ -113,15 +150,21 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <section ref={mediaRef} className="py-16 flex items-center justify-center relative z-10 px-4">
-        <div className="max-w-4xl mx-auto w-full">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8 fade-in-up">My Work</h2>
+      <section ref={mediaRef} className="py-24 flex items-center justify-center relative z-10 px-4">
+        <div className="max-w-6xl mx-auto w-full">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-12 fade-in-up">
+            Featured <span className="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-orange-400">Projects</span>
+          </h2>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <MediaDropZone type="mixed" title="Content 1" description="Image or Video" />
-            <MediaDropZone type="mixed" title="Content 2" description="Image or Video" />
-            <MediaDropZone type="mixed" title="Content 3" description="Image or Video" />
-            <MediaDropZone type="mixed" title="Content 4" description="Image or Video" />
+          <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[200px] gap-4">
+            {PROJECTS.map((project, index) => (
+              <ProjectCard
+                key={index}
+                {...project}
+                className={`${project.className || ""} opacity-0 translate-y-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 fill-mode-forwards`}
+                style={{ animationDelay: `${index * 150}ms` }}
+              />
+            ))}
           </div>
         </div>
       </section>
